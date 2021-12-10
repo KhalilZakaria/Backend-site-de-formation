@@ -26,8 +26,20 @@ public class FormationService {
 	    }
 	    public void save(Formation formation) {
 	    	formationRepo.save(formation);
-	}
+      	}
+	    
+	    public Formation findbyId(long id) {
+			return  formationRepo.findById(id);	}
+	    
 		public Formation findById(long id) {
 			 return formationRepo.findById(id);
+		}
+		public List<Formation> findByCategorie(Categorie categorie) {
+			
+			 return formationRepo.findByCategorie(categorie);
+		}
+		public void delete(Formation formation) {
+			formationRepo.delete(formation);
+			
 		}
 }
