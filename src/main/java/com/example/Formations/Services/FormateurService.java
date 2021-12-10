@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.Formations.Repository.CategorieRepository;
 import com.example.Formations.Repository.FormateurRepository;
 import com.example.Formations.entities.Categorie;
+import com.example.Formations.entities.Client;
 import com.example.Formations.entities.Formateur;
 
 import lombok.AllArgsConstructor;
@@ -29,5 +30,9 @@ public class FormateurService {
 	}
 		public Formateur findById(long id) {
 			 return formateurRepo.findById(id);
+		}
+		public void delete(Formateur formateur) {
+			formateurRepo.delete(formateur);
+			
 		}
 }

@@ -29,4 +29,6 @@ public class CategorieController {
 	    public void save(@RequestBody Categorie category){
 		 categorieService.save(category);
 	    }
+	 
+	 
 }

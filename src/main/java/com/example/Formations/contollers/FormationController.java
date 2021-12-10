@@ -1,12 +1,9 @@
 package com.example.Formations.contollers;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.* ;
+
 
 import com.example.Formations.Services.CategorieService;
 import com.example.Formations.Services.FormationService;
@@ -22,6 +19,7 @@ import lombok.AllArgsConstructor;
 public class FormationController {
 	
 	private  FormationService formationService;
+	private CategorieService   categorieService;
 	
 	 @GetMapping(value = "/find/all")
 	    public List<Formation> findAll( ){
@@ -30,5 +28,22 @@ public class FormationController {
 	 @PostMapping(value = "/add_Formation")
 	    public void save(@RequestBody Formation formation){
 		 formationService.save(formation);
+	    }
+	 
+	 @GetMapping(value = "/find/Categorie/{nom}")
+	    public List<Formation>  findByCategorie(@PathVariable String nom ){
+		    Categorie categorie =  categorieService.findByNom(nom);
+	        return  formationService.findByCategorie(categorie);
+	    }
+	
+	 @DeleteMapping(value = "/delete/{id}")
+	   public void Delete(@PathVariable long id ){
+		 Formation formation = formationService.findbyId(id);
+		 formationService.delete(formation);
+	    }
+	  @PatchMapping("/update")//replace an existing Resource entirely  // @PatchMapping partial update
+	    public String update(@RequestBody  Formation formation) {
+		  formationService.save(formation);
+	       return "updated  success";
 	    }
 }

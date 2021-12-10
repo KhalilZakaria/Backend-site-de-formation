@@ -7,6 +7,7 @@ import com.example.Formations.Repository.CategorieRepository;
 import com.example.Formations.Repository.ClientRepository;
 import com.example.Formations.entities.Categorie;
 import com.example.Formations.entities.Client;
+import com.example.Formations.entities.Formation;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,9 @@ public class ClientService {
 	}
 		public Client findById(long id) {
 			 return clientRepo.findById(id);
+		}
+		public void delete(Client client) {
+			clientRepo.delete(client);
+			
 		}
 }
