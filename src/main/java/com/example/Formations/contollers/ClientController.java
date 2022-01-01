@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +45,11 @@ public class ClientController {
 	   public void Delete(@PathVariable long id ){
 		 Client client = clientService.findById(id);
 		 clientService.delete(client);
+	    }
+	 @PatchMapping("/update")//replace an existing Resource entirely  // @PatchMapping partial update
+	    public String update(@RequestBody Client client) {
+		 clientService.save(client);
+	     return "updated  success";
 	    }
 	 
 	
