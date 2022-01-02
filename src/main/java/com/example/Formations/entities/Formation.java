@@ -1,5 +1,6 @@
 package com.example.Formations.entities;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class Formation {
     private String nom;
 	
 	@Column(name = "date")
-    private String date;
+    private Date date;
 	
 	@Column(name = "description")
     private String description;

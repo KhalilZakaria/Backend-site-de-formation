@@ -21,6 +21,9 @@ public class FormationService {
 	        return formationRepo.findAll();
 	    }
 	    
+	    public Categorie findidcategorie(long id) {
+	    	return formationRepo.findById(id).getCategorie();
+	    }
 	    public Formation findByNom(String nom) {
 	        return formationRepo.findByNom(nom);
 	    }

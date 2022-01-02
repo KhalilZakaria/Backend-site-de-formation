@@ -1,4 +1,8 @@
 package com.example.Formations.contollers;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Formations.Services.CategorieService;
+import com.example.Formations.Services.ClientService;
+import com.example.Formations.Services.FormationService;
 import com.example.Formations.Services.SubscriptionService;
 import com.example.Formations.entities.Categorie;
+import com.example.Formations.entities.Client;
 import com.example.Formations.entities.Formation;
 import com.example.Formations.entities.Subscription;
 
@@ -42,8 +49,20 @@ public class SubscriptionController {
 		 subscriptionService.delete(subcription);
 	    }
 	 
+	  public Client findIdClient(long idsub ){
+	        return subscriptionService.findIdclient(idsub);
+	    }
+	  public Formation findIdFormation(long idsub ){
+	        return subscriptionService.findIdformation(idsub);
+	    }
 	 @PatchMapping("/update")
-	    public String update(@RequestBody  Subscription subcription) {
+	    public String update(@RequestBody  Subscription subcription) throws ParseException {
+		 subcription.setClient(findIdClient(subcription.getId()));
+		 subcription.setFormation(findIdFormation(subcription.getId()));
+//		 Date startdate=new SimpleDateFormat("yyyy-MM-dd").parse(subcription.getDate_debut());  
+//		 Date enddate=new SimpleDateFormat("yyyy-MM-dd").parse(subcription.getDate_fin());  
+//		 if(startdate != null) {subcription.setDate_debut(startdate)}
+//		 if(enddate != null) {}
 		 subscriptionService.save(subcription);
 	        return "updated  success";
 	    }

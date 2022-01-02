@@ -1,5 +1,7 @@
 package com.example.Formations.contollers;
 import java.util.List;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 
 
 import org.springframework.web.bind.annotation.* ;
@@ -25,6 +27,12 @@ public class FormationController {
 	    public List<Formation> findAll( ){
 	        return formationService.findAll();
 	    }
+	 
+	
+	    public Categorie findidcategorie(long idformation ){
+	        return formationService.findidcategorie(idformation);
+	    }
+	 
 	 @PostMapping(value = "/add_Formation")
 	    public void save(@RequestBody Formation formation){
 		 formationService.save(formation);
@@ -43,6 +51,7 @@ public class FormationController {
 	    }
 	  @PatchMapping("/update")//replace an existing Resource entirely  // @PatchMapping partial update
 	    public String update(@RequestBody  Formation formation) {
+		  formation.setCategorie(findidcategorie(formation.getId()));
 		  formationService.save(formation);
 	       return "updated  success";
 	    }
