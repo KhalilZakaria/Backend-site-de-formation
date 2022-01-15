@@ -21,7 +21,9 @@ public class FormateurService {
 	    public List<Formateur> findAll() {
 	        return formateurRepo.findAll();
 	    }
-	    
+	    public Long getLastCreated() {
+	    	return formateurRepo.getLastCreated();
+	    }
 	    public Formateur findByNom(String nom) {
 	        return formateurRepo.findByNom(nom);
 	    }

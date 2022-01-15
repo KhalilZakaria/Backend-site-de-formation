@@ -46,5 +46,8 @@ public class Client {
 	@Column(name = "ville")
     private String ville;
 	
+	@Column(name = "adresse")
+    private String Adresse;
+	
 	
 }
