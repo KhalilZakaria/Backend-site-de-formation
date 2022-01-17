@@ -1,6 +1,5 @@
 package com.example.Formations.entities;
 
-
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -18,31 +17,34 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "subscription")
-public class Subscription {
+@Table(name = "responsable")
+
+public class Responsable {
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true,nullable = false)
     private long id;
 	
-	@Column(name = "date_debut")
-    private String date_debut;
+	@Column(name = "nom")
+    private String nom;
 	
-	@Column(name = "date_fin")
-    private String date_fin;
+	@Column(name = "prenom")
+    private String prenom;
 	
-	@ManyToOne
-	private Client client;
+	@Column(name = "cin")
+    private String cin;
 	
-	@ManyToOne
-	private Formateur formateur;
+	@Column(name = "gsm")
+    private String gsm;
 	
-	@ManyToOne
-	private Formation formation;
+	@Column(name = "email")
+    private String email;
 	
-	@ManyToOne
-	private Responsable responsable;
+	@Column(name = "ville")
+    private String ville;
+	
 }
