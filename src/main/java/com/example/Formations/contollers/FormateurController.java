@@ -41,12 +41,18 @@ public class FormateurController {
 	    }
 	 @PostMapping(value = "/add_formateur")
 	    public long save(@RequestBody Formateur formateur){
+		 Long LastCreatedformateur;
 		 int lastIndexOf = formateur.getPhoto().lastIndexOf(".");
 		 if (lastIndexOf == -1) {
 		        System.out.println("empty extension"); // 
 		    }
 		 String extention = formateur.getPhoto().substring(lastIndexOf);
-		 Long LastCreatedformateur = getLastCreated() + 1;
+		 if (getLastCreated() == null) {
+			  LastCreatedformateur =  (long) 1;
+		 }
+		 else {
+			 LastCreatedformateur = getLastCreated() + 1;
+		 }
 		 formateur.setPhoto("Formateur_"+LastCreatedformateur+ extention);
 		 formateurService.save(formateur);
 		 return LastCreatedformateur;
