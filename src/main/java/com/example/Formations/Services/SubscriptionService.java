@@ -25,15 +25,18 @@ public class SubscriptionService {
 	        return subscriptionRepo.findAll();
 	    }
 	    
-	    public void save(Subscription subscription) {
+	    public int save(Subscription subscription) {
 	    	try {
 				subscriptionRepo.save(subscription);
-			} catch (Exception e) {
+				emailSender.send( subscription.getFormateur().getEmail(),buildEmail(subscription.getFormateur().getPrenom(), subscription.getFormation().getNom(),subscription.getDate_debut(),subscription.getDate_fin(),subscription.getClient().getNom()));
+				return 1;
+	    	} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return 0;
 			}
 	    	
-	    	emailSender.send( subscription.getFormateur().getEmail(),buildEmail(subscription.getFormateur().getPrenom(), subscription.getFormation().getNom(),subscription.getDate_debut(),subscription.getDate_fin(),subscription.getClient().getNom()));
+	    	
 	}
 		public Subscription findById(long id) {
 			 return subscriptionRepo.findById(id);

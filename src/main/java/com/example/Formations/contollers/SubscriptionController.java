@@ -39,8 +39,9 @@ public class SubscriptionController {
 	        return subscriptionService.findAll();
 	    }
 	 @PostMapping(value = "/add_Subscription")
-	    public void save(@RequestBody Subscription subscription){
-		 subscriptionService.save(subscription);
+	    public int save(@RequestBody Subscription subscription){
+		 int result = subscriptionService.save(subscription);
+		 return result;
 	    }
 	 
 	 @DeleteMapping(value = "/delete/{id}")
