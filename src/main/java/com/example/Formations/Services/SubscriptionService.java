@@ -41,7 +41,9 @@ public class SubscriptionService {
 		public Subscription findById(long id) {
 			 return subscriptionRepo.findById(id);
 		}
-		
+		public void validate(long id) {
+			  subscriptionRepo.validate(id);
+		}
 		public void delete(Subscription subcription) {
 			subscriptionRepo.delete(subcription);
 			

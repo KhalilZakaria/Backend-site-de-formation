@@ -50,4 +50,7 @@ public class Formateur {
 	@Column(name = "ville")
     private String ville;
 	
+	@Column(name = "color")
+    private String color;
+	
 }
