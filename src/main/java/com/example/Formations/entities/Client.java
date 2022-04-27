@@ -30,8 +30,6 @@ public class Client {
 	@Column(name = "nom")
     private String nom;
 	
-	@Column(name = "prenom")
-    private String prenom;
 	
 	@Column(name = "cin")
     private String cin;

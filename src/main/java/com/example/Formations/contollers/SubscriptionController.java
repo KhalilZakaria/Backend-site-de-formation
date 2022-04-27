@@ -43,6 +43,10 @@ public class SubscriptionController {
 		 int result = subscriptionService.save(subscription);
 		 return result;
 	    }
+	 @PostMapping(value = "/validate")
+	    public void validate(@RequestBody long id){
+		subscriptionService.validate(id);
+		}
 	 
 	 @DeleteMapping(value = "/delete/{id}")
 	   public void Delete(@PathVariable long id ){

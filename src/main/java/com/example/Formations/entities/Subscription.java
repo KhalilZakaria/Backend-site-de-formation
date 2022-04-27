@@ -45,4 +45,7 @@ public class Subscription {
 	
 	@ManyToOne
 	private Responsable responsable;
+	
+	@Column(name = "isConfirmed")
+    private String isConfirmed;
 }
